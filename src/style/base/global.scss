@@ -1,0 +1,124 @@
+@use "resolutions" as *;
+@use "fonts" as *;
+
+:root {
+  --c-background-dark: #050505;
+  --c-white: #ffffff;
+  --c-black: #2d2d2d;
+  --c-search-light: #f4f4f4;
+  --c-search-dark: #1f1f1f;
+  --c-dark-grey: #757575;
+  --c-line-color-light: #e9e9e9;
+  --c-line-color-dark: #3a3a3a;
+  --c-purple: #a445ed;
+  --c-red: #ff5252;
+
+  /* Heading */
+  --h-f-l: 6.4rem;
+  --h-f-m: 2.4rem;
+  --h-f-s: 2rem;
+
+  /* Body */
+  --b-f-m: 1.8rem;
+  --b-f-s: 1.4rem;
+
+  --b-lh-m: 24px;
+
+  /* Fonts Family */
+
+  --f-family: "Inter", sans-serif;
+  --f-family-sans: "Inter", sans-serif;
+  --f-family-serif: "Lora", serif;
+  --f-family-mono: "Inconsolata", monospace;
+}
+
+//light mode
+body[data-mode="light"] {
+  --background-color: var(--c-white);
+  --dropdown-background-color: var(--c-white);
+  --input-background-color: var(--c-search-light);
+  --input-placeholder-color: var(--c-black);
+  --font-color: var(--c-black);
+  --box-shadow-color: rgba(0, 0, 0, 0.1);
+  --nav-line-color: var(--c-line-color-light);
+  --mode-button-background: var(--c-dark-grey);
+  --mode-moon-color: var(--c-dark-grey);
+  --button-audio-background-hover: var(--c-background-dark);
+  --nounVerb-line-color: var(--c-line-color-light);
+}
+
+//dark mode
+body[data-mode="dark"] {
+  --background-color: var(--c-background-dark);
+  --dropdown-background-color: var(--c-search-dark);
+  --input-background-color: var(--c-search-dark);
+  --input-placeholder-color: var(--c-white);
+  --font-color: var(--c-white);
+  --box-shadow-color: var(--c-purple);
+  --nav-line-color: var(--c-line-color-light);
+  --mode-button-background: var(--c-purple);
+  --mode-moon-color: var(--c-purple);
+  --button-audio-background-hover: var(--c-white);
+  --nounVerb-line-color: var(--c-line-color-dark);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  text-decoration: none;
+  list-style: none;
+}
+
+html {
+  font-size: 62.5%; //10px/16px = 62.5%, 1rem = 10px;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--font-color);
+  font-family: var(--f-family);
+  font-size: var(--b-f-s);
+  line-height: var(--b-lh-m);
+
+  @include tablet {
+    font-size: var(--b-f-m);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  line-height: normal;
+}
+
+.wrapper {
+  width: min(737px, calc(100% - 48px));
+  margin: auto;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+textarea,
+button,
+select {
+  font: inherit;
+}

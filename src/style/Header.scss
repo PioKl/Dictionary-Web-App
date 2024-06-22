@@ -1,0 +1,147 @@
+@use "./base/resolutions.scss" as *;
+
+.header {
+  padding-top: 5.8rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 2.4rem;
+
+  @include tablet {
+    margin-bottom: 5.2rem;
+  }
+
+  &__logo {
+    margin-right: auto;
+  }
+
+  &__fontsDropdownContainer {
+    color: var(--font-color);
+    font-weight: bold;
+  }
+
+  &__fontsDropdownButton {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: inherit;
+
+    &::after {
+      content: "";
+      display: block;
+      background-image: url("../assets/images/icon-arrow-down.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 1.2rem;
+      height: 0.6rem;
+      margin-left: 1.6rem;
+    }
+  }
+
+  &__fontsOptionsList {
+    position: absolute;
+    z-index: 1;
+    //top: 11.5%;
+    //right: 25%;
+    margin-top: 1.5rem;
+    margin-left: -5.5rem;
+    display: none;
+    gap: 1.6rem;
+    padding: 2.4rem;
+    padding-right: 6.9rem;
+    background-color: var(--dropdown-background-color);
+    box-shadow: 0px 5px 30px var(--box-shadow-color);
+    border-radius: 1.6rem;
+
+    &.--show {
+      display: grid;
+    }
+  }
+
+  &__fontsOption {
+    &:hover,
+    &:focus,
+    &.--active {
+      color: var(--c-purple);
+    }
+
+    button {
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: inherit;
+
+      &[data-font="Sans Serif"] {
+        font-family: var(--f-family-sans);
+      }
+
+      &[data-font="Serif"] {
+        font-family: var(--f-family-serif);
+      }
+
+      &[data-font="Mono"] {
+        font-family: var(--f-family-mono);
+      }
+    }
+  }
+
+  &__line {
+    display: inline-block;
+    width: 0.1rem;
+    height: 3.2rem;
+    background-color: var(--nav-line-color);
+    margin-inline: 2.6rem;
+  }
+
+  &__modeContainer {
+    display: flex;
+  }
+
+  &__modeButton {
+    cursor: pointer;
+    width: 4rem;
+    height: 2rem;
+    margin-right: 2rem;
+    padding-inline: 0.3rem;
+    border-radius: 999px;
+    border: none;
+    background-color: var(--mode-button-background);
+    transition: all 0.2s ease-in-out;
+
+    &:hover,
+    &:focus {
+      background-color: var(--c-purple);
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      position: relative;
+      background-color: var(--c-white);
+      width: 1.4rem;
+      height: 1.4rem;
+      border-radius: 50%;
+      left: 0;
+      transition: all 0.2s ease-in-out;
+    }
+    &[aria-expanded="true"] {
+      &::before {
+        left: 50%;
+      }
+    }
+  }
+
+  &__modeIcon {
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--mode-moon-color);
+    mask-image: url("../assets/images/icon-moon.svg");
+    mask-size: cover;
+  }
+}

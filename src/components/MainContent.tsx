@@ -124,7 +124,7 @@ const MainContent: React.FC<MainContentProps> = ({ data }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {data.sourceUrls}
+              {data.sourceUrls[0]}
             </a>
           </div>
         </div>

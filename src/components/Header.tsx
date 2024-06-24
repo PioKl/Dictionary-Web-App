@@ -8,12 +8,7 @@ interface FontInterface {
   family: string;
 }
 
-interface HeaderProps {
-  searchWord: string;
-  setSearchWord: React.Dispatch<React.SetStateAction<string>>;
-}
-
-export default function Header({ setSearchWord }: HeaderProps) {
+export default function Header() {
   const btnChangeMode = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -129,10 +124,7 @@ export default function Header({ setSearchWord }: HeaderProps) {
           <div className="nav__modeIcon"></div>
         </div>
       </nav>
-      <Search
-        setSearchWord={setSearchWord}
-        fontDropDownMenuRef={fontDropDownMenuRef}
-      />
+      <Search fontDropDownMenuRef={fontDropDownMenuRef} />
     </header>
   );
 }

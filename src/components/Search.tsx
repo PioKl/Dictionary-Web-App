@@ -1,19 +1,18 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../style/Search.scss";
 import IconSearch from "../assets/images/icon-search.svg";
 
 interface SearchProps {
-  setSearchWord: React.Dispatch<React.SetStateAction<string>>;
   fontDropDownMenuRef: React.RefObject<HTMLUListElement>;
 }
 
-const Search: React.FC<SearchProps> = ({
-  setSearchWord,
-  fontDropDownMenuRef,
-}) => {
+const Search: React.FC<SearchProps> = ({ fontDropDownMenuRef }) => {
   const [errorEmptySearch, setErrorEmptySearch] = useState(false);
 
   const [inputText, setInputText] = useState("");
+
+  const navigate = useNavigate();
 
   const handleDropDownRemoveShow = () => {
     if (fontDropDownMenuRef.current) {
@@ -27,7 +26,7 @@ const Search: React.FC<SearchProps> = ({
 
   const handleSearch = () => {
     inputText === "" ? setErrorEmptySearch(true) : setErrorEmptySearch(false),
-      setSearchWord(inputText);
+      navigate(`/${inputText}`);
   };
 
   return (

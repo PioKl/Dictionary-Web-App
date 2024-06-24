@@ -1,24 +1,29 @@
 import { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useParams,
+} from "react-router-dom";
 import "./style/App.scss";
 import { Word, NoWordFound } from "./types/types";
 import Header from "./components/Header";
 import Loader from "./components/Loader";
 import MainContent from "./components/MainContent";
 
-function App() {
-  const [searchWord, setSearchWord] = useState("");
+function SearchResult() {
+  const { wordFromUrl } = useParams<{ wordFromUrl: string }>(); // Pobierze parametr z URL, dzięki (navigate/wpisane słowo)
   const [loader, setLoader] = useState(false);
   const [data, setData] = useState<Word | NoWordFound | null>(null);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!searchWord) {
+    if (!wordFromUrl) {
       return; // Nie wykonuj fetcha, jeśli searchWord jest pusty
     }
 
     setLoader(true);
 
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchWord}`)
+    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordFromUrl}`)
       .then((response) => response.json())
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
@@ -27,28 +32,33 @@ function App() {
           setData(data as NoWordFound);
         } else {
           setData(null); // Wyczyść poprzednie dane
-          setError("Unknown response from server");
         }
         setLoader(false);
       })
       .catch((error) => {
-        setError(error);
+        console.log(error);
         setData(null);
         setLoader(false);
       });
-  }, [searchWord]);
-
-  console.log(data);
-  console.log(error);
+  }, [wordFromUrl]);
 
   return (
-    <>
-      <Header searchWord={searchWord} setSearchWord={setSearchWord} />
-      <main className="wrapper">
-        {loader ? <Loader /> : <MainContent data={data} />}
-      </main>
+    <main className="wrapper">
+      {loader ? <Loader /> : <MainContent data={data} />}
+    </main>
+  );
+}
+
+function App() {
+  return (
+    <Router basename="/Dictionary-Web-App/">
+      <Header />
+      <Routes>
+        {/* Obsługa dynamicznych ścieżek */}
+        <Route path="/:wordFromUrl" element={<SearchResult />} />
+      </Routes>
       <footer></footer>
-    </>
+    </Router>
   );
 }
 

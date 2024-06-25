@@ -103,7 +103,7 @@ const MainContent: React.FC<MainContentProps> = ({ data }) => {
                       >
                         <a
                           className="synonymusContainer__synonymusItemLink"
-                          href={`/Dictionary-Web-App/${synonym}`}
+                          href={`/Dictionary-Web-App/#/${synonym}`}
                         >
                           {synonym}
                         </a>

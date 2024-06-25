@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   useParams,
@@ -51,7 +51,7 @@ function SearchResult() {
 
 function App() {
   return (
-    <Router basename="/Dictionary-Web-App/">
+    <Router>
       <Header />
       <Routes>
         {/* Obsługa dynamicznych ścieżek */}

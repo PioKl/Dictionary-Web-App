@@ -10,6 +10,7 @@ import { Word, NoWordFound } from "./types/types";
 import Header from "./components/Header";
 import Loader from "./components/Loader";
 import MainContent from "./components/MainContent";
+import ErrorPage from "./components/ErrorPage";
 
 function SearchResult() {
   const { wordFromUrl } = useParams<{ wordFromUrl: string }>(); // Pobierze parametr z URL, dzięki (navigate/wpisane słowo)
@@ -54,6 +55,7 @@ function App() {
     <Router>
       <Header />
       <Routes>
+        <Route path="*" element={<ErrorPage />} />
         {/* Obsługa dynamicznych ścieżek */}
         <Route path="/:wordFromUrl" element={<SearchResult />} />
       </Routes>

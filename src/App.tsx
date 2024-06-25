@@ -57,6 +57,7 @@ function App() {
       <Routes>
         <Route path="*" element={<ErrorPage />} />
         {/* Obsługa dynamicznych ścieżek */}
+        <Route path="/" element={<SearchResult />} />
         <Route path="/:wordFromUrl" element={<SearchResult />} />
       </Routes>
       <footer></footer>

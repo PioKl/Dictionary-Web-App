@@ -12,4 +12,12 @@
     margin-bottom: 2.4rem;
     font-size: var(--h-f-s);
   }
+
+  &__return {
+    color: var(--c-purple);
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
 }

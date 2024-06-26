@@ -29,6 +29,7 @@ const Search: React.FC<SearchProps> = ({ fontDropDownMenuRef }) => {
   const handleSearch = () => {
     inputText === "" ? setErrorEmptySearch(true) : setErrorEmptySearch(false),
       inputRef.current && (inputRef.current.value = ""),
+      setInputText(""),
       navigate(`/${inputText}`);
   };
 

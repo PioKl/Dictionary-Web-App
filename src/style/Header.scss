@@ -47,8 +47,6 @@
   &__fontsOptionsList {
     position: absolute;
     z-index: 1;
-    //top: 11.5%;
-    //right: 25%;
     margin-top: 1.5rem;
     margin-left: -5.5rem;
     display: none;
@@ -66,7 +64,6 @@
 
   &__fontsOption {
     &:hover,
-    &:focus,
     &.--active {
       color: var(--c-purple);
     }
@@ -87,6 +84,10 @@
 
       &[data-font="Mono"] {
         font-family: var(--f-family-mono);
+      }
+
+      &:focus {
+        color: var(--c-purple);
       }
     }
   }

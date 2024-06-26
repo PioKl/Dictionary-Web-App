@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "../style/Search.scss";
 import IconSearch from "../assets/images/icon-search.svg";
@@ -9,6 +9,8 @@ interface SearchProps {
 
 const Search: React.FC<SearchProps> = ({ fontDropDownMenuRef }) => {
   const [errorEmptySearch, setErrorEmptySearch] = useState(false);
+
+  const inputRef = useRef<HTMLInputElement>(null); //Referencja do inputa, w celu wyczyszczenia go przy wyszukiwaniu
 
   const [inputText, setInputText] = useState("");
 
@@ -26,6 +28,7 @@ const Search: React.FC<SearchProps> = ({ fontDropDownMenuRef }) => {
 
   const handleSearch = () => {
     inputText === "" ? setErrorEmptySearch(true) : setErrorEmptySearch(false),
+      inputRef.current && (inputRef.current.value = ""),
       navigate(`/${inputText}`);
   };
 
@@ -36,6 +39,7 @@ const Search: React.FC<SearchProps> = ({ fontDropDownMenuRef }) => {
           className={`searchInputContainer__input ${
             errorEmptySearch ? "--empty" : ""
           }`}
+          ref={inputRef}
           type="text"
           placeholder="Search for any word..."
           onFocus={handleDropDownRemoveShow}

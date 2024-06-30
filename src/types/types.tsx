@@ -6,6 +6,7 @@ export interface Word {
     partOfSpeech: string;
     definitions: { definition: string; example?: string }[];
     synonyms: string[];
+    antonyms: string[];
   }[];
   sourceUrls: string;
 }

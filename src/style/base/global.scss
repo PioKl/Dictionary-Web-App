@@ -33,8 +33,25 @@
   --f-family-mono: "Inconsolata", monospace;
 }
 
+@media (prefers-color-scheme: dark) {
+  body {
+    --background-color: var(--c-background-dark);
+    --dropdown-background-color: var(--c-search-dark);
+    --input-background-color: var(--c-search-dark);
+    --input-placeholder-color: var(--c-white);
+    --font-color: var(--c-white);
+    --box-shadow-color: var(--c-purple);
+    --nav-line-color: var(--c-line-color-light);
+    --mode-button-background: var(--c-purple);
+    --mode-moon-color: var(--c-purple);
+    --button-audio-background-hover: var(--c-white);
+    --nounVerb-line-color: var(--c-line-color-dark);
+  }
+}
+
 //light mode
 body[data-mode="light"] {
+  color-scheme: light;
   --background-color: var(--c-white);
   --dropdown-background-color: var(--c-white);
   --input-background-color: var(--c-search-light);
@@ -50,6 +67,7 @@ body[data-mode="light"] {
 
 //dark mode
 body[data-mode="dark"] {
+  color-scheme: dark;
   --background-color: var(--c-background-dark);
   --dropdown-background-color: var(--c-search-dark);
   --input-background-color: var(--c-search-dark);
@@ -79,6 +97,7 @@ body[data-mode="dark"] {
 
 html {
   font-size: 62.5%; //10px/16px = 62.5%, 1rem = 10px;
+  color-scheme: dark light;
 }
 
 body {

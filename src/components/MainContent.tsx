@@ -93,19 +93,43 @@ const MainContent: React.FC<MainContentProps> = ({ data }) => {
                 ))}
               </ul>
               {meaning.synonyms.length > 0 && (
-                <div className="synonymusContainer">
-                  <h2 className="synonymusContainer__heading">Synonymus</h2>
-                  <ul className="synonymusContainer__synonymusItemList">
+                <div className="synonymsAntonymsContainer">
+                  <h2 className="synonymsAntonymsContainer__heading">
+                    Synonyms
+                  </h2>
+                  <ul className="synonymsAntonymsContainer__synonymsAntonymsItemList">
                     {meaning.synonyms.map((synonym, synonymIndex) => (
                       <li
                         key={synonymIndex}
-                        className="synonymusContainer__synonymusItem"
+                        className="synonymsAntonymsContainer__synonymsAntonymsItem"
                       >
                         <a
-                          className="synonymusContainer__synonymusItemLink"
+                          className="synonymsAntonymsContainer__synonymsAntonymsItemLink"
                           href={`/Dictionary-Web-App/#/${synonym}`}
                         >
                           {synonym}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {meaning.antonyms.length > 0 && (
+                <div className="synonymsAntonymsContainer">
+                  <h2 className="synonymsAntonymsContainer__heading">
+                    Antonyms
+                  </h2>
+                  <ul className="synonymsAntonymsContainer__synonymsAntonymsItemList">
+                    {meaning.antonyms.map((antonym, antonymIndex) => (
+                      <li
+                        key={antonymIndex}
+                        className="synonymsAntonymsContainer__synonymsAntonymsItem"
+                      >
+                        <a
+                          className="synonymsAntonymsContainer__synonymsAntonymsItemLink"
+                          href={`/Dictionary-Web-App/#/${antonym}`}
+                        >
+                          {antonym}
                         </a>
                       </li>
                     ))}
